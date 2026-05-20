@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# OS / editor cruft
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node
+**/node_modules/
+
+# PCF build output (also covered by per-project .gitignore, but belt-and-braces)
+**/out/
+**/bin/
+**/obj/
+**/generated/
+*.binlog

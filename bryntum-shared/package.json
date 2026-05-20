@@ -1,0 +1,23 @@
+{
+  "name": "bryntum-shared",
+  "version": "1.0.0",
+  "description": "Per-product Bryntum bundles for Dataverse web resource hosting",
+  "private": true,
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "@bryntum/core-thin": "^7.3.0",
+    "@bryntum/engine-thin": "^7.3.0",
+    "@bryntum/grid-thin": "^7.3.0",
+    "@bryntum/scheduler-thin": "^7.3.0",
+    "@bryntum/schedulerpro-thin": "^7.3.0",
+    "@bryntum/gantt-thin": "^7.3.0",
+    "@bryntum/calendar-thin": "^7.3.0",
+    "@bryntum/taskboard-thin": "^7.3.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.97.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

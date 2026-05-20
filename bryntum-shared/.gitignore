@@ -1,0 +1,5 @@
+node_modules/
+.DS_Store
+
+# Build output — see note below on whether to commit dist/bryntum.js
+dist/

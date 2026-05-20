@@ -1,0 +1,326 @@
+@charset "UTF-8";
+/*!
+ *
+ * Bryntum Gantt 7.3.0
+ *
+ * Copyright(c) 2026 Bryntum AB
+ * https://bryntum.com/contact
+ * https://bryntum.com/license
+ *
+ * Bryntum incorporates third-party code licensed under the MIT and Apache-2.0 licenses.
+ * See the licenses below or visit https://bryntum.com/products/gantt/docs/guide/Gantt/licenses
+ *
+ * # Third Party Notices
+ * 
+ * Bryntum uses the following third party libraries:
+ * 
+ * * [Font Awesome 6 Free](https://fontawesome.com/license/free) (MIT/SIL OFL 1.1)
+ * * [Roboto font (for Material theme only)](https://github.com/google/roboto) (Apache-2.0)
+ * * [Styling Cross-Browser Compatible Range Inputs with Sass](https://github.com/darlanrod/input-range-sass) (MIT)
+ * * [Tree Walker polyfill (only applies to Salesforce)](https://github.com/Krinkle/dom-TreeWalker-polyfill) (MIT)
+ * * [chronograph](https://github.com/bryntum/chronograph) (MIT)
+ * * [later.js](https://github.com/bunkat/later) (MIT)
+ * * [Monaco editor (only used in our demos)](https://microsoft.github.io/monaco-editor) (MIT)
+ * * Map/Set polyfill to fix performance issues for Salesforce LWS (MIT)
+ * * [Chart.js (when using Chart package)](https://github.com/chartjs/Chart.js) (MIT)
+ * 
+ * Note: the **chronograph** and **later.js** libraries are used in Bryntum Scheduler Pro and Bryntum Gantt, but they are
+ * listed for all Bryntum products since the distribution contains trial versions of the thin bundles for all other
+ * products. TreeWalker is only used in the LWC bundle for Salesforce. Roboto font is only used in the material theme.
+ * 
+ * ## Font Awesome 6 Free
+ * 
+ * [Font Awesome Free 6 by @fontawesome](https://fontawesome.com/)
+ * 
+ * Font Awesome Free is free, open source, and GPL friendly. You can use it for commercial projects, open source projects,
+ * or really almost whatever you want.
+ * 
+ * [Full Font Awesome Free license](https://fontawesome.com/license/free)
+ * 
+ * ## Roboto font
+ * 
+ * [Apache License Version 2.0, January 2004](https://www.apache.org/licenses/LICENSE-2.0)
+ * 
+ * TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+ * 
+ * 1. Definitions.
+ * 
+ * "License" shall mean the terms and conditions for use, reproduction, and distribution as defined by Sections 1 through 9
+ * of this document.
+ * 
+ * "Licensor" shall mean the copyright owner or entity authorized by the copyright owner that is granting the License.
+ * 
+ * "Legal Entity" shall mean the union of the acting entity and all other entities that control, are controlled by, or are
+ * under common control with that entity. For the purposes of this definition,
+ * "control" means (i) the power, direct or indirect, to cause the direction or management of such entity, whether by
+ * contract or otherwise, or (ii) ownership of fifty percent (50%) or more of the outstanding shares, or (iii) beneficial
+ * ownership of such entity.
+ * 
+ * "You" (or "Your") shall mean an individual or Legal Entity exercising permissions granted by this License.
+ * 
+ * "Source" form shall mean the preferred form for making modifications, including but not limited to software source code,
+ * documentation source, and configuration files.
+ * 
+ * "Object" form shall mean any form resulting from mechanical transformation or translation of a Source form, including
+ * but not limited to compiled object code, generated documentation, and conversions to other media types.
+ * 
+ * "Work" shall mean the work of authorship, whether in Source or Object form, made available under the License, as
+ * indicated by a copyright notice that is included in or attached to the work
+ * (an example is provided in the Appendix below).
+ * 
+ * "Derivative Works" shall mean any work, whether in Source or Object form, that is based on (or derived from) the Work
+ * and for which the editorial revisions, annotations, elaborations, or other modifications represent, as a whole, an
+ * original work of authorship. For the purposes of this License, Derivative Works shall not include works that remain
+ * separable from, or merely link (or bind by name) to the interfaces of, the Work and Derivative Works thereof.
+ * 
+ * "Contribution" shall mean any work of authorship, including the original version of the Work and any modifications or
+ * additions to that Work or Derivative Works thereof, that is intentionally submitted to Licensor for inclusion in the
+ * Work by the copyright owner or by an individual or Legal Entity authorized to submit on behalf of the copyright owner.
+ * For the purposes of this definition, "submitted"
+ * means any form of electronic, verbal, or written communication sent to the Licensor or its representatives, including
+ * but not limited to communication on electronic mailing lists, source code control systems, and issue tracking systems
+ * that are managed by, or on behalf of, the Licensor for the purpose of discussing and improving the Work, but excluding
+ * communication that is conspicuously marked or otherwise designated in writing by the copyright owner as "Not a
+ * Contribution."
+ * 
+ * "Contributor" shall mean Licensor and any individual or Legal Entity on behalf of whom a Contribution has been received
+ * by Licensor and subsequently incorporated within the Work.
+ * 
+ * 2. Grant of Copyright License. Subject to the terms and conditions of this License, each Contributor hereby grants to
+ *    You a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to reproduce,
+ *    prepare Derivative Works of, publicly display, publicly perform, sublicense, and distribute the Work and such
+ *    Derivative Works in Source or Object form.
+ * 
+ * 3. Grant of Patent License. Subject to the terms and conditions of this License, each Contributor hereby grants to You a
+ *    perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+ *    (except as stated in this section) patent license to make, have made, use, offer to sell, sell, import, and otherwise
+ *    transfer the Work, where such license applies only to those patent claims licensable by such Contributor that are
+ *    necessarily infringed by their Contribution(s) alone or by combination of their Contribution(s)
+ *    with the Work to which such Contribution(s) was submitted. If You institute patent litigation against any entity (
+ *    including a cross-claim or counterclaim in a lawsuit) alleging that the Work or a Contribution incorporated within
+ *    the Work constitutes direct or contributory patent infringement, then any patent licenses granted to You under this
+ *    License for that Work shall terminate as of the date such litigation is filed.
+ * 
+ * 4. Redistribution. You may reproduce and distribute copies of the Work or Derivative Works thereof in any medium, with
+ *    or without modifications, and in Source or Object form, provided that You meet the following conditions:
+ * 
+ * (a) You must give any other recipients of the Work or Derivative Works a copy of this License; and
+ * 
+ * (b) You must cause any modified files to carry prominent notices stating that You changed the files; and
+ * 
+ * (c) You must retain, in the Source form of any Derivative Works that You distribute, all copyright, patent, trademark,
+ * and attribution notices from the Source form of the Work, excluding those notices that do not pertain to any part of the
+ * Derivative Works; and
+ * 
+ * (d) If the Work includes a "NOTICE" text file as part of its distribution, then any Derivative Works that You distribute
+ * must include a readable copy of the attribution notices contained within such NOTICE file, excluding those notices that
+ * do not pertain to any part of the Derivative Works, in at least one of the following places: within a NOTICE text file
+ * distributed as part of the Derivative Works; within the Source form or documentation, if provided along with the
+ * Derivative Works; or, within a display generated by the Derivative Works, if and wherever such third-party notices
+ * normally appear. The contents of the NOTICE file are for informational purposes only and do not modify the License. You
+ * may add Your own attribution notices within Derivative Works that You distribute, alongside or as an addendum to the
+ * NOTICE text from the Work, provided that such additional attribution notices cannot be construed as modifying the
+ * License.
+ * 
+ * You may add Your own copyright statement to Your modifications and may provide additional or different license terms and
+ * conditions for use, reproduction, or distribution of Your modifications, or for any such Derivative Works as a whole,
+ * provided Your use, reproduction, and distribution of the Work otherwise complies with the conditions stated in this
+ * License.
+ * 
+ * 5. Submission of Contributions. Unless You explicitly state otherwise, any Contribution intentionally submitted for
+ *    inclusion in the Work by You to the Licensor shall be under the terms and conditions of this License, without any
+ *    additional terms or conditions. Notwithstanding the above, nothing herein shall supersede or modify the terms of any
+ *    separate license agreement you may have executed with Licensor regarding such Contributions.
+ * 
+ * 6. Trademarks. This License does not grant permission to use the trade names, trademarks, service marks, or product
+ *    names of the Licensor, except as required for reasonable and customary use in describing the origin of the Work and
+ *    reproducing the content of the NOTICE file.
+ * 
+ * 7. Disclaimer of Warranty. Unless required by applicable law or agreed to in writing, Licensor provides the Work (and
+ *    each Contributor provides its Contributions) on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ *    either express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT,
+ *    MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. You are solely responsible for determining the appropriateness
+ *    of using or redistributing the Work and assume any risks associated with Your exercise of permissions under this
+ *    License.
+ * 
+ * 8. Limitation of Liability. In no event and under no legal theory, whether in tort (including negligence), contract, or
+ *    otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing,
+ *    shall any Contributor be liable to You for damages, including any direct, indirect, special, incidental, or
+ *    consequential damages of any character arising as a result of this License or out of the use or inability to use the
+ *    Work (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or
+ *    any and all other commercial damages or losses), even if such Contributor has been advised of the possibility of such
+ *    damages.
+ * 
+ * 9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose
+ *    to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or
+ *    rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and
+ *    on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and
+ *    hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason
+ *    of your accepting any such warranty or additional liability.
+ * 
+ * END OF TERMS AND CONDITIONS
+ * 
+ * APPENDIX: How to apply the Apache License to your work.
+ * 
+ * To apply the Apache License to your work, attach the following boilerplate notice, with the fields enclosed by
+ * brackets "[]"
+ * replaced with your own identifying information. (Don't include the brackets!)  The text should be enclosed in the
+ * appropriate comment syntax for the file format. We also recommend that a file or class name and description of purpose
+ * be included on the same "printed page" as the copyright notice for easier identification within third-party archives.
+ * 
+ * Copyright [yyyy] [name of copyright owner]
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at
+ * 
+ * [APACHE LICENSE, VERSION 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "
+ * AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific
+ * language governing permissions and limitations under the License.
+ * 
+ * ## Styling Cross-Browser Compatible Range Inputs with Sass
+ * 
+ * Github: [input-range-sass](https://github.com/darlanrod/input-range-sass)
+ * 
+ * Author: [Darlan Rod](https://github.com/darlanrod)
+ * 
+ * Version 1.4.1
+ * 
+ * The MIT License (MIT)
+ * 
+ * Copyright (c) 2016 Darlan Rod
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit
+ * persons to whom the Software is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+ * Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+ * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+ * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * ## Tree Walker polyfill
+ * 
+ * The MIT License (MIT)
+ * 
+ * [Copyright 2013–2017 Timo Tijhof](https://github.com/Krinkle/dom-TreeWalker-polyfill)
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit
+ * persons to whom the Software is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+ * Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+ * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+ * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * ## chronograph
+ * 
+ * GitHub: [chronograph](https://github.com/bryntum/chronograph)
+ * 
+ * The MIT License (MIT)
+ * 
+ * Copyright (c) 2023 Bryntum
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit
+ * persons to whom the Software is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+ * Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+ * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+ * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * ## later.js
+ * 
+ * GitHub: [later.js](https://github.com/bunkat/later)
+ * 
+ * The MIT License (MIT)
+ * 
+ * Copyright © 2013 BunKat
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit
+ * persons to whom the Software is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+ * Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+ * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+ * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * ## Monaco editor
+ * 
+ * GitHub: [Monaco editor](https://microsoft.github.io/monaco-editor) (MIT)
+ * 
+ * The MIT License (MIT)
+ * 
+ * Copyright (c) 2016 - present Microsoft Corporation
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit
+ * persons to whom the Software is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+ * Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+ * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+ * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ * ## Map/Set polyfill to fix performance issues for Salesforce LWS
+ * 
+ * Copyright © 2024 Certinia Inc.
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ * 
+ * ## Chart.js
+ * 
+ * GitHub: [Chart.js](https://github.com/chartjs/Chart.js)
+ * 
+ * The MIT License (MIT)
+ * 
+ * Copyright (c) 2014-2022 Chart.js Contributors
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+ * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+ * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ */
+:root,:host{--b-allocation-cell-editor-z-index: 10}.b-schedule-context-canvas .b-allocation-cell-editor{box-shadow:none;text-align:center;z-index:var(--b-allocation-cell-editor-z-index);--b-text-field-outlined-background: var(--b-neutral-100);--b-text-field-outlined-focus-background: var(--b-neutral-100)}.b-schedule-context-canvas .b-allocation-cell-editor .b-number-field .b-spin-trigger,.b-resource-utilization.b-editing-allocation-cell .b-active-tick{display:none}:root,:host{--b-calendar-highlight-border-style: dashed;--b-calendar-highlight-border-width: 2px;--b-calendar-highlight-background-transparency: 50%}.b-sch-highlighted-calendar-range{position:absolute;display:grid;place-items:center;overflow:hidden;color:var(--b-calendar-highlight-color, var(--b-primary-60));background-color:var(--b-calendar-highlight-background, color-mix(in srgb, var(--b-primary-95), transparent var(--b-calendar-highlight-background-transparency)));border:var(--b-calendar-highlight-border-width) var(--b-calendar-highlight-border-style) var(--b-calendar-highlight-border-color, color-mix(in srgb, var(--b-calendar-highlight-color, var(--b-primary-60)), transparent var(--b-calendar-highlight-background-transparency)))}.b-sch-highlighted-calendar-range .b-sch-event-content{padding:.5em;text-align:center;font-size:var(--b-sch-event-font-size)}.b-timeline-base:not(.b-wheel-zooming) .b-sch-highlighted-calendar-range{animation-name:b-anim-fade-in;animation-duration:.2s}:root,:host{--b-inactive-dependency-stroke-array: 4 2}.b-sch-dependency.b-inactive{stroke-dasharray:var(--b-inactive-dependency-stroke-array)}:root,:host{--b-event-buffer-color: var(--b-border-6);--b-event-buffer-label-color: var(--b-text-4)}.b-event-buffer .b-sch-event:where(:not(.b-milestone)){width:100%}.b-event-buffer .b-sch-event-buffer-before{grid-area:start}.b-event-buffer .b-sch-event-buffer-after{grid-area:end}.b-event-buffer.b-sch-horizontal .b-sch-event-wrap .b-sch-event-buffer{align-items:center;height:5px;background:repeating-linear-gradient(180deg,transparent,transparent 30%,var(--b-event-buffer-color) 30%,var(--b-event-buffer-color) 70%,transparent 70%,transparent 100%)}.b-event-buffer.b-sch-horizontal .b-sch-event-wrap .b-sch-event-buffer-before{flex-direction:row;justify-content:flex-end}.b-event-buffer.b-sch-horizontal .b-sch-event-wrap .b-sch-event-buffer-before .b-buffer-label{margin-inline-end:auto;padding-inline-end:.5em}.b-event-buffer.b-sch-horizontal .b-sch-event-wrap .b-sch-event-buffer-before .b-buffer-label,.b-event-buffer.b-sch-horizontal .b-sch-event-wrap .b-sch-event-buffer-before i{translate:.1em -1em}.b-event-buffer.b-sch-horizontal .b-sch-event-wrap .b-sch-event-buffer-before i{margin-inline-end:.5em}.b-event-buffer.b-sch-horizontal .b-sch-event-wrap .b-sch-event-buffer-after{flex-direction:row-reverse;justify-content:flex-end}.b-event-buffer.b-sch-horizontal .b-sch-event-wrap .b-sch-event-buffer-after .b-buffer-label,.b-event-buffer.b-sch-horizontal .b-sch-event-wrap .b-sch-event-buffer-after i{translate:-.1em -1em}.b-event-buffer.b-sch-horizontal .b-sch-event-wrap .b-sch-event-buffer-after .b-buffer-label{text-align:right;margin-inline-start:.5em}.b-event-buffer.b-sch-horizontal .b-sch-event-wrap .b-sch-event-buffer-after i{margin-inline-start:auto;padding-inline-start:.5em}.b-event-buffer.b-sch-vertical .b-sch-event-wrap{contain:size layout}.b-event-buffer.b-sch-vertical .b-sch-event-wrap .b-sch-event-buffer{width:5px;justify-self:center;background:repeating-linear-gradient(90deg,transparent,transparent 30%,var(--b-event-buffer-color) 30%,var(--b-event-buffer-color) 70%,transparent 70%,transparent 100%)}.b-event-buffer.b-sch-vertical .b-sch-event-wrap .b-sch-event-buffer-before{grid-area:above;flex-direction:column;justify-content:flex-end}.b-event-buffer.b-sch-vertical .b-sch-event-wrap .b-sch-event-buffer-before .b-buffer-label{margin-inline-end:.5em}.b-event-buffer.b-sch-vertical .b-sch-event-wrap .b-buffer-label,.b-event-buffer.b-sch-vertical .b-sch-event-wrap i{margin-right:-1.3em;writing-mode:vertical-rl}.b-event-buffer.b-sch-vertical .b-sch-event-wrap .b-sch-event-buffer-after{grid-area:below;flex-direction:column-reverse;justify-content:flex-end}.b-event-buffer.b-sch-vertical .b-sch-event-wrap .b-sch-event-buffer-after .b-buffer-label{margin-inline-start:.5em}.b-event-buffer .b-sch-event-buffer{display:flex;white-space:nowrap;font-size:10px;color:var(--b-event-buffer-label-color)}.b-animating .b-sch-event-buffer{transition:width .2s}:root,:host{--b-event-segment-renamer-z-index: 15;--b-segment-link-width: 1px;--b-segment-link-style: dashed;--b-segment-link-color: var(--b-border-4);--b-segmented-background: transparent}:is(.b-gantt-task-wrap,.b-sch-event-wrap) .b-segmented{border-width:0;border-radius:0;width:100%;padding:0;background:var(--b-segmented-background)}.b-sch-event-segments{position:absolute;top:0;width:100%;height:calc(50% + .5px);pointer-events:none;border-bottom:var(--b-segment-link-width) var(--b-segment-link-style) var(--b-segment-link-color)}.b-sch-event-segments .b-sch-event-segment{pointer-events:all;position:absolute;display:flex;align-items:center}.b-event-segment-renamer{border-radius:inherit;z-index:var(--b-event-segment-renamer-z-index)}.b-event-segment-renamer .b-field-inner{border-radius:inherit}.b-event-segment-renamer .b-field{--b-text-field-background: var(--b-primary-100)}:root,:host{--b-nested-events-hover-z-index: 9;--b-nested-events-deps-canvas-z-index: 8;--b-nested-events-header-height: 20px;--b-nested-events-parent-color: var(--b-neutral-40);--b-nested-events-parent-background: transparent;--b-nested-events-parent-hover-background: transparent;--b-nested-events-parent-selected-background: transparent;--b-nested-events-container-background: var(--b-neutral-97);--b-nested-events-container-hover-background: var(--b-neutral-93);--b-nested-events-container-selected-background: var(--b-neutral-91)}.b-sch-event-wrap.b-nested-events-parent>.b-sch-event:where(:not(.b-milestone)){--b-sch-event-color: var(--b-nested-events-parent-color);--b-sch-event-background: var(--b-nested-events-parent-background);--b-sch-event-hover-background: var(--b-nested-events-parent-hover-background);--b-sch-event-selected-background: var(--b-nested-events-parent-selected-background);border-inline-start:none;flex-direction:column;width:100%}.b-sch-event-wrap.b-nested-events-parent>.b-sch-event:where(:not(.b-milestone)):hover:not(:has(.b-sch-event:hover)){--b-nested-events-container-background: var(--b-nested-events-container-hover-background)}.b-sch-event-wrap.b-nested-events-parent>.b-sch-event:where(:not(.b-milestone))>.b-sch-event-content{padding-block:.1em;flex:0 0 var(--b-nested-events-header-height);min-height:0}.b-sch-event-wrap.b-nested-events-parent>.b-sch-event:where(:not(.b-milestone)):before,.b-sch-event-wrap.b-nested-events-parent>.b-sch-event:where(:not(.b-milestone)):after{display:none}.b-sch-event-wrap.b-nested-events-parent.b-sch-style-traced,.b-sch-event-wrap.b-nested-events-parent.b-sch-style-bordered,.b-sch-event-wrap.b-nested-events-parent.b-sch-style-outlined{--b-nested-events-container-background: transparent;--b-nested-events-container-hover-background: transparent;--b-nested-events-container-selected-background: transparent}.b-sch-event-wrap.b-nested-events-parent.b-sch-style-traced,.b-sch-event-wrap.b-nested-events-parent.b-sch-style-bordered{--b-nested-events-parent-background: var(--b-neutral-95);--b-nested-events-parent-hover-background: var(--b-neutral-93);--b-nested-events-parent-selected-background: var(--b-neutral-91)}.b-sch-event-wrap.b-nested-events-parent.b-sch-style-rounded>.b-sch-event:where(:not(.b-milestone)){border-radius:0}.b-sch-event-wrap.b-nested-events-parent.b-sch-style-rounded>.b-sch-event:where(:not(.b-milestone)) .b-nested-events-container{border-radius:var(--b-sch-event-border-radius)}.b-nested-events-container{position:relative;align-self:flex-start;flex:1;width:100%;overflow:visible;transition:background .2s;border-radius:inherit;background:var(--b-nested-events-container-background)}.b-sch-event-wrap.b-selected .b-nested-events-container{--b-nested-events-container-background: var(--b-nested-events-container-selected-background)}.b-nested-events-container .b-sch-event:where(:not(.b-milestone)){width:100%}.b-nested-events-container .b-sch-event{translate:calc(var(--b-sch-event-border-width) * -1)}.b-nested-events-container.b-nested-events-layout-stack{overflow-y:auto;overflow-x:hidden}.b-dependencies:not(.b-dependency-only-parent) .b-nested-events-parent>.b-sch-event,.b-dependencies:not(.b-dependency-only-parent) .b-nested-events-container.b-nested-events-layout-stack{overflow:visible}.b-dependencies:not(.b-dependency-only-parent) .b-nested-event.b-sch-event-hover{z-index:var(--b-nested-events-hover-z-index)}.b-sch-event-wrap.b-nested-events-parent.b-sch-vertical>.b-sch-event:where(:not(.b-milestone)){flex-direction:row;padding:0}.b-sch-event-wrap.b-nested-events-parent.b-sch-vertical>.b-sch-event:where(:not(.b-milestone))>.b-sch-event-content{writing-mode:vertical-rl;transform:rotate(180deg)}.b-sch-event-wrap.b-nested-events-parent.b-sch-vertical .b-nested-events-container{height:100%}.b-nested-events .b-sch-dependencies-canvas{z-index:var(--b-nested-events-deps-canvas-z-index)}:root,:host{--b-percent-bar-z-index: 1;--b-percent-bar-handle-z-index: 1000;--b-percent-bar-blend-mode: multiply;--b-percent-bar-handle-text-color: var(--b-grid-cell-color)}.b-percent-bar .b-sch-event-wrap,.b-percent-bar .b-sch-event{overflow:visible}.b-task-percent-bar-outer{position:absolute;inset:0;overflow:clip;transition:background-color .2s;border-radius:calc(var(--b-sch-event-border-radius) - var(--b-sch-event-border-width, 0px))}.b-task-percent-bar{--b-percent-bar-background: color-mix(in srgb, var(--b-primary), transparent 70%);border-start-start-radius:inherit;border-end-start-radius:inherit;box-sizing:content-box;display:flex;justify-content:flex-end;align-items:flex-end;line-height:initial;transition:color .2s,background-color .2s,opacity .2s;mix-blend-mode:var(--b-percent-bar-blend-mode);background:var(--b-percent-bar-background);z-index:var(--b-percent-bar-z-index)}.b-sch-horizontal .b-task-percent-bar,.b-gantt .b-task-percent-bar{height:100%;max-width:100%;text-align:right}.b-sch-vertical .b-task-percent-bar{width:100%;max-height:100%}.b-animating .b-task-percent-bar{transition:color .2s,width .2s,height .2s}.b-task-percent-bar-resizing-task .b-task-percent-bar{transition:background-color .2s}.b-task-percent-bar-handle{position:absolute;width:0;height:0;display:flex;justify-content:center;border-color:#fff;border-inline-color:transparent;border-width:0 5px 6px 5px;border-style:solid;opacity:1;z-index:var(--b-percent-bar-handle-z-index)}.b-sch-horizontal .b-task-percent-bar-handle,.b-gantt .b-task-percent-bar-handle{cursor:ew-resize!important;bottom:0;margin-inline-start:-5px}.b-gantt-task-parent .b-task-percent-bar-handle{bottom:8px}.b-sch-vertical .b-task-percent-bar-handle{cursor:ns-resize!important;left:0;margin-top:-4px;transform:rotate(90deg)}.b-sch-horizontal .b-sch-event .b-task-percent-bar-handle{margin-inline-start:-8px;border-width:0 6px 7px 7px}.b-sch-vertical .b-sch-event .b-task-percent-bar-handle{margin-inline-start:-3px;border-width:0 6px 7px 7px}.b-sch-event.b-sch-event-selected .b-task-percent-bar-handle{z-index:var(--b-percent-bar-handle-z-index)}.b-task-percent-bar-handle:after{position:absolute;margin-top:10px;font-size:.8em;color:var(--b-percent-bar-handle-text-color)}:is(.b-task-percent-bar-show-percentage:where(:not(.b-resizing-event,.b-dragging-event)).b-task-percent-bar-resizing-task,.b-task-percent-bar-show-percentage:where(:not(.b-resizing-event,.b-dragging-event)) .b-sch-event-hover) .b-task-percent-bar-handle:after{content:attr(data-percent) "%"}.b-sch-vertical .b-task-percent-bar-handle:after{margin-top:-2em;rotate:-90deg}:is(.b-task-percent-bar-resizing-task,.b-task-percent-bar-resizing-event) .b-sch-event,:is(.b-task-percent-bar-resizing-task,.b-task-percent-bar-resizing-event) .b-gantt-task{user-select:none;-webkit-user-select:none;cursor:ew-resize!important;overflow:visible}.b-task-percent-bar-drag-disabled .b-task-percent-bar-handle,.b-read-only .b-task-percent-bar-handle{display:none!important}:root,:host{--b-resource-non-working-time-background: color-mix(in srgb, var(--b-neutral-60), transparent var(--b-resource-non-working-time-background-opacity));--b-resource-non-working-time-background-opacity: 94%;--b-resource-non-working-time-color: var(--b-neutral-10);--b-resource-non-working-time-zindex: 5}.b-resource-non-working-time-canvas{z-index:var(--b-resource-non-working-time-zindex)}.b-sch-resource-non-working-time{--b-resource-time-range-color: var(--b-resource-non-working-time-color);--b-resource-time-range-background: var(--b-resource-non-working-time-background)}:root,:host{--b-time-span-highlight-range-font-size: var(--b-sch-event-font-size);--b-time-span-highlight-range-opacity: .5;--b-time-span-highlight-unavailable-background: var(--b-neutral-95);--b-time-span-highlight-unavailable-color: var(--b-neutral-40)}.b-sch-highlight-container{position:absolute;top:0;inset-inline-start:0;pointer-events:none}.b-sch-highlighted-range{position:absolute;display:flex;align-items:center;justify-content:center;transition-property:opacity;transition-duration:.3s;color:var(--b-time-span-highlight-range-color, var(--b-primary-40));font-size:var(--b-time-span-highlight-range-font-size);opacity:var(--b-time-span-highlight-range-opacity)}.b-sch-highlighted-range.b-unavailable{color:var(--b-time-span-highlight-unavailable-color);background:var(--b-time-span-highlight-unavailable-background)}.b-sch-highlighted-range-name{text-overflow:ellipsis;overflow:hidden}.b-sch-highlighted-range-default{background:var(--b-time-span-highlight-range-background, var(--b-primary-95));border:2px dashed var(--b-time-span-highlight-range-border-color, var(--b-primary-70))}.b-timeline-base.b-transition-highlight .b-sch-highlighted-range[data-sync-id]{transition-property:width,height,inset-inline-start,top,opacity}@starting-style{.b-sch-highlighted-range{opacity:0}}:is(.b-resources-tab,.b-resource-grid) .b-grid-row:not(.b-group-row) .b-not-editable{--b-grid-cell-background: var(--b-neutral-98);--b-grid-cell-hover-background: var(--b-neutral-96);--b-grid-cell-selected-background: var(--b-neutral-95);--b-grid-cell-hover-selected-background: var(--b-neutral-94)}:root,:host{--b-resource-histogram-bar-legend-font-size: inherit;--b-resource-histogram-bar-color: color-mix(in srgb, var(--b-color-green), var(--b-mix) 70%);--b-resource-histogram-bar-hover-color: color-mix(in srgb, var(--b-color-green), var(--b-mix) 50%);--b-resource-histogram-underallocated-bar-color: color-mix(in srgb, var(--b-color-green), var(--b-mix) 40%);--b-resource-histogram-underallocated-bar-hover-color: color-mix(in srgb, var(--b-color-green), var(--b-mix) 20%);--b-resource-histogram-overallocated-bar-color: color-mix(in srgb, var(--b-color-red), var(--b-mix) 40%);--b-resource-histogram-overallocated-bar-hover-color: color-mix(in srgb, var(--b-color-red), var(--b-mix) 20%)}.b-histogram-bar-tooltip span.b-underallocated{color:var(--b-resource-histogram-underallocated-bar-color)}.b-histogram-bar-tooltip span.b-overallocated{color:var(--b-resource-histogram-overallocated-bar-color)}.b-resource-histogram-histogram{padding:0;background-color:transparent}.b-resource-histogram .b-histogram-canvas .b-bar-legend{font-size:var(--b-resource-histogram-bar-legend-font-size);pointer-events:none}.b-resource-histogram .b-histogram-canvas rect,.b-resource-histogram .b-histogram-canvas rect.b-series-index-0{fill:var(--b-resource-histogram-bar-color)}:is(.b-resource-histogram .b-histogram-canvas rect,.b-resource-histogram .b-histogram-canvas rect.b-series-index-0).b-underallocated{fill:var(--b-resource-histogram-underallocated-bar-color)}:is(.b-resource-histogram .b-histogram-canvas rect,.b-resource-histogram .b-histogram-canvas rect.b-series-index-0).b-underallocated:hover{fill:var(--b-resource-histogram-underallocated-bar-hover-color)}:is(.b-resource-histogram .b-histogram-canvas rect,.b-resource-histogram .b-histogram-canvas rect.b-series-index-0).b-overallocated{fill:var(--b-resource-histogram-overallocated-bar-color)}:is(.b-resource-histogram .b-histogram-canvas rect,.b-resource-histogram .b-histogram-canvas rect.b-series-index-0).b-overallocated:hover{fill:var(--b-resource-histogram-overallocated-bar-hover-color)}:is(.b-resource-histogram .b-histogram-canvas rect,.b-resource-histogram .b-histogram-canvas rect.b-series-index-0):hover{fill:var(--b-resource-histogram-bar-hover-color)}:root,:host{--b-calendar-editor-non-working-day-background: color-mix(in srgb, var(--b-color-red), transparent 90%);--b-calendar-editor-working-day-background: transparent}.b-calendar-editor .b-tab-panel,.b-calendar-editor .b-tab-panel-item{height:100%}.b-calendar-editor .b-widget.b-html{user-select:none;-webkit-user-select:none}.b-calendar-editor .b-calendar-editor-content{padding-top:0}.b-calendar-editor [data-ref=generalTab]{padding-top:1.5em;flex-wrap:wrap;align-content:flex-start;overflow-y:auto}.b-calendar-editor [data-ref=generalTab] [data-ref=divider]{height:1px;margin:0}.b-resource-rate-table-editor{width:40em}.b-scheduling-issue-resolution-popup{max-width:min(600px,80%)}:root,:host{--b-task-editor-padding: var(--b-panel-with-header-padding);--b-task-editor-occurrence-info-primary: var(--b-color-red);--b-task-editor-bottom-button-width: 6.5em}.b-task-editor-base{--b-tab-padding: 0 .75em;--b-tab-icon-only-padding: 0 .75em}.b-task-editor-base>.b-panel-body-wrap>.b-popup-content{padding:var(--b-task-editor-padding);flex-direction:column}.b-task-editor-base>.b-panel-body-wrap>.b-bottom-toolbar .b-button{min-width:var(--b-task-editor-bottom-button-width)}.b-occurrence-info-toolbar{--b-primary: var(--b-task-editor-occurrence-info-primary);--b-toolbar-background: var(--b-task-editor-occurrence-info-background, var(--b-primary-97));--b-toolbar-padding: .5em var(--b-panel-padding)}:root,:host{--b-timeline-label-font-weight: 500;--b-timeline-background: transparent;--b-timeline-border-color: var(--b-grid-cell-border-color);--b-timeline-label-color: var(--b-text-3)}.b-timeline{overflow:visible;background:var(--b-timeline-background);--b-grid-header-background: transparent}.b-timeline .b-grid-panel-body{padding:2em 10em 4em}.b-timeline .b-virtual-scrollers,.b-timeline .b-yscroll-pad{display:none!important}.b-timeline .b-sch-header-row:not(:first-child){display:none}.b-timeline .b-grid-row{background:transparent;border-bottom:1px solid transparent}.b-timeline .b-grid-cell{border-block:1px solid var(--b-timeline-border-color)}.b-timeline .b-sch-header-time-axis-cell{justify-content:flex-start;padding:0 0 .5em .5em;border:none;background:transparent;font-weight:var(--b-timeline-label-font-weight);color:var(--b-timeline-label-color)}.b-timeline .b-sch-header-time-axis-cell:before{content:" ";position:absolute;inset-inline-start:0;bottom:0;height:.7em;border-inline-start:1px solid var(--b-timeline-border-color)}.b-timeline .b-scheduler-base,.b-timeline .b-grid-body-container,.b-timeline .b-grid-vertical-scroller,.b-timeline .b-grid-sub-grid,.b-timeline .b-sch-foreground-canvas{overflow:visible!important;contain:none!important}.b-timeline .b-grid-header{min-height:1.5em}.b-timeline .b-grid-vertical-overflow .b-grid-header-scroller:last-child{border-right:none}.b-timeline .b-timeline-start-date{inset-inline-start:-1em;translate:-100%}.b-timeline .b-timeline-end-date{inset-inline-end:-1em;translate:100%}.b-timeline .b-timeline-start-date,.b-timeline .b-timeline-end-date{position:absolute;top:0;display:flex;align-items:center;justify-content:center;min-width:6em;color:var(--b-timeline-label-color);font-size:var(--b-grid-header-font-size);font-weight:var(--b-timeline-label-font-weight)}:root,:host{--b-version-grid-property-value-background: var(--b-neutral-95);--b-version-grid-property-font-size: .9em}.b-version-grid-property-update-desc{display:flex;gap:.4em;align-items:baseline;font-size:var(--b-version-grid-property-font-size)}.b-version-grid-property-name:after{content:":"}.b-version-grid-property-before,.b-version-grid-property-after{padding:.2em .4em;border-radius:.1em;background:var(--b-version-grid-property-value-background)}.b-version-grid-empty-value{opacity:.5}.b-version-grid .b-tree-cell.b-tree-parent-cell{font-weight:400}.b-version-grid-highlighted-entity{font-weight:700}.b-version-grid-comparing{background:var(--b-color-blue)}.b-calendar-editor-availability-range-container{flex:1}.b-calendar-editor-availability-range-container .b-flex-row{align-items:center}.b-calendar-editor-availability-range-container .b-availability-range .b-time-field{width:6.6em}.b-calendar-editor-availability-range-container .b-availability-range [data-ref=addRangeButton]{margin-inline-start:auto}.b-calendar-editor-availability-range-container .b-availability-range:only-child [data-ref=removeRangeButton]{display:none}.b-calendar-editor-availability-range-container .b-availability-range:not(:first-child) [data-ref=addRangeButton]{display:none}.b-calendar-editor-base-tab{flex-flow:nowrap}.b-calendar-editor-base-tab .b-grid[data-ref=grid]{flex:0 0 15em;margin-top:1.5em;border:var(--b-text-field-outlined-border-width) solid var(--b-text-field-outlined-border-color);border-radius:var(--b-widget-border-radius);--b-panel-bottom-toolbar-padding: .5em;--b-toolbar-gap: 0;--b-grid-cell-padding-inline: 0}.b-calendar-editor-base-tab .b-grid[data-ref=grid] .b-grid-row.b-invalid .b-grid-cell{color:var(--b-text-field-invalid-border-color)}.b-calendar-editor-base-tab .b-grid[data-ref=grid] .b-grid-cell.b-color-cell .b-color-cell-swatch{border-radius:var(--b-widget-border-radius);margin-inline:0}.b-calendar-editor-base-tab .b-calendar-editor-form{grid-template-columns:max-content 1fr 4em max-content 1fr 4em;padding-top:1.5em}:is(.b-calendar-editor-base-tab .b-calendar-editor-form [data-ref=nameField],.b-calendar-editor-base-tab .b-calendar-editor-form [data-ref=exceptionStartDateField],.b-calendar-editor-base-tab .b-calendar-editor-form [data-ref=isWorkingField])>.b-label{width:3.5em}.b-calendar-editor-base-tab .b-calendar-editor-form [data-ref=nameField]{grid-column:span 5}.b-calendar-editor-base-tab .b-calendar-editor-form [data-ref=startDateField],.b-calendar-editor-base-tab .b-calendar-editor-form [data-ref=endDateField],.b-calendar-editor-base-tab .b-calendar-editor-form [data-ref=exceptionStartDateField],.b-calendar-editor-base-tab .b-calendar-editor-form [data-ref=exceptionEndDateField]{grid-column:span 3}.b-calendar-editor-base-tab .b-calendar-editor-form [data-ref=isWorkingField]{grid-column:span 5;gap:var(--bi-field-gap)}.b-calendar-editor-base-tab .b-calendar-editor-form .b-span-row{grid-column:1 / -1}.b-calendar-editor-base-tab .b-calendar-editor-form .b-color-field input{max-width:0;padding-inline:0}.b-calendar-editor-base-tab .b-calendar-editor-form .b-color-field .b-color-box{margin-inline-start:1.25em}.b-calendar-editor-base-tab .b-widget[data-ref=panel]{overflow-y:auto;height:100%}.b-calendar-editor-base-tab .b-availability-range{align-items:center}.b-calendar-editor-content .b-calendar-editor-date-info{display:block}.b-calendar-editor-date-info{padding:.4em}.b-calendar-editor-date-info .b-time-ranges{padding-inline-start:2em}.b-calendar-editor-date-info .b-intervals{padding-inline-start:.8em}.b-calendar-editor-date-info .b-intervals li{display:flex;align-items:center;gap:1em}.b-calendar-editor-date-info .b-intervals li.b-interval:hover{cursor:pointer;text-decoration:underline}.b-calendar-editor-date-info .b-intervals li:before{content:"";width:1em;height:1em;border-radius:var(--b-widget-border-radius)}.b-calendar-editor-date-info .b-intervals li.b-interval:before{background-color:var(--b-primary);display:inline-block}.b-calendar-editor-date-info .b-intervals li.b-interval:hover:before{text-decoration:none}.b-calendar-editor-date-info .b-date-text{font-weight:700}:root,:host{--b-calendar-editor-badge-z-index: 5}.b-calendar-editor-date-picker{--b-toolbar-padding: 0;--b-calendar-panel-gap: .57em;--b-date-picker-min-width: 0;--b-panel-with-header-top-toolbar-background: transparent}.b-calendar-editor-date-picker .b-calendar-panel-cell:not(.b-selected-date) .b-date-picker-cell-inner.b-non-working-day{background:var(--b-calendar-editor-non-working-day-background)}.b-calendar-editor-date-picker .b-calendar-panel-cell:not(.b-selected-date) .b-date-picker-cell-inner.b-working-day{background:var(--b-calendar-editor-working-day-background)}.b-calendar-editor-date-picker .b-calendar-panel-cell .b-date-picker-cell-payload.b-interval-badges{inset-inline:.4em auto}.b-calendar-editor-date-picker .b-calendar-panel-cell .b-date-picker-cell-payload.b-interval-badges .b-interval-badge:before{content:" ";min-width:.5em;min-height:.5em;display:flex;justify-content:center;align-items:center;border-radius:2px;z-index:var(--b-calendar-editor-badge-z-index);background-color:var(--b-primary)}.b-calendar-editor-exception-tab{--b-divider-font-size: 1em;--b-divider-line-color: var(--b-text-field-outlined-border-color);--b-divider-text-color: var(--b-text-field-label-color);align-content:flex-start}.b-calendar-editor-exception-tab .b-calendar-editor-exception-panel{flex:1}.b-calendar-editor-exception-tab .b-calendar-editor-availability-range-container{padding-inline-start:4.5em;margin-bottom:1em}.b-calendar-editor-exception-tab .b-calendar-editor-availability-range-container .b-availability-range .b-time-field{width:11em}.b-calendar-editor-exception-tab .b-recurrence-editor .b-recurrence-month-days-button-group{margin-block-start:0}.b-calendar-editor-exception-tab .b-slide-toggle-splitter{grid-template-areas:"line-before before inner line-after";grid-template-columns:1fr auto auto 1fr;width:auto}.b-calendar-editor-exception-tab .b-slide-toggle-splitter label{justify-self:end}.b-calendar-editor-exception-tab .b-slide-toggle-splitter:before,.b-calendar-editor-exception-tab .b-slide-toggle-splitter:after{content:"";height:1px;width:100%;background:var(--b-text-field-outlined-border-color)}.b-calendar-editor-exception-tab .b-slide-toggle-splitter:before{grid-area:line-before}.b-calendar-editor-exception-tab .b-slide-toggle-splitter:after{grid-area:line-after}.b-calendar-editor-exception-tab [data-ref=noRecordAddButton]{margin-top:1.5em}.b-calendar-editor-exception-tab .b-divider{margin-block:1.5em 1em}.b-calendar-editor-legend{display:block;padding:0}.b-calendar-editor-legend>ul{padding:0;margin-top:0}.b-calendar-editor-legend>ul li{display:flex;align-items:center;margin-bottom:.5em}.b-calendar-editor-legend>ul li.b-interval-legend{gap:0}.b-calendar-editor-legend>ul li.b-interval-legend:hover{cursor:pointer;text-decoration:underline}.b-calendar-editor-legend>ul li:before{content:"";display:inline-block;text-align:center;margin-inline-end:1em;width:1.5em;height:1.5em;line-height:1.5em;background:currentColor;vertical-align:middle;border-radius:var(--b-widget-border-radius)}.b-calendar-editor-legend>ul li.b-working-day,.b-calendar-editor-legend>ul li.b-non-working-day{line-height:2em}.b-calendar-editor-legend>ul li.b-working-day{margin-bottom:.8em}.b-calendar-editor-legend>ul li.b-non-working-day{margin-bottom:1.5em}.b-calendar-editor-legend>ul li.b-non-working-day:before,.b-calendar-editor-legend>ul li.b-working-day:before{border:solid 1px #bbb;border-radius:50%}.b-calendar-editor-legend>ul li.b-non-working-day:before{background:var(--b-calendar-editor-non-working-day-background)}.b-calendar-editor-legend>ul li.b-working-day:before{background:var(--b-calendar-editor-working-day-background)}.b-calendar-editor-legend>ul li.b-interval-legend:before{color:var(--b-primary);display:inline-block}.b-calendar-editor-legend>ul li.b-interval-legend:hover:before{text-decoration:none}.b-calendar-editor-week-panel{flex:1;align-content:flex-start}.b-calendar-editor-week-panel .b-availability-day{gap:0}.b-calendar-editor-week-panel .b-availability-day .b-slide-toggle{margin-inline:auto 1em}.b-calendar-editor-week-panel .b-day-paste{display:none}.b-calendar-editor-week-panel .b-divider{margin:0}.b-calendar-editor-week-panel [data-ref=container]{align-items:flex-start;width:11em;padding-top:1em}.b-calendar-editor-week-panel [data-ref=weekContainer].b-copying .b-availability-day.b-copied .b-day-copy{display:inherit}.b-calendar-editor-week-panel [data-ref=weekContainer].b-copying .b-availability-day.b-copied .b-day-paste{display:none}.b-calendar-editor-week-panel [data-ref=weekContainer].b-copying .b-availability-day:not(.b-copied) .b-day-copy{display:none}.b-calendar-editor-week-panel [data-ref=weekContainer].b-copying .b-availability-day:not(.b-copied) .b-day-paste{display:inherit}.b-resource-editor-general-tab.b-label-align-before{grid-template-columns:max-content 1fr max-content;padding:var(--b-panel-padding) 0 0;--b-field-align-before-field-column: span 2}.b-resource-editor-general-tab.b-label-align-before [data-ref=materialLabel]{--b-field-align-before-field-column: span 1}.b-resource-editor-general-tab.b-label-align-before [data-ref=materialLabel] .b-label.b-align-end{font-size:.9em;font-style:italic}.b-resource-editor-rate-tables-tab{padding:0;padding-top:var(--b-panel-padding)}.b-resource-editor-rate-tables-tab .b-text-field .b-label{width:6em}.b-editor-tab:not(.b-form-tab){--b-container-gap: 0}.b-editor-tab:not(.b-form-tab) .b-compact-bbar{--b-toolbar-padding: 0;--b-toolbar-gap: 0}:root,:host{--b-resource-utilization-bar-legend-font-size: .9em;--b-resource-utilization-resource-bar-legend-font-size: .9em;--b-resource-utilization-assignment-bar-legend-font-size: .9em;--b-resource-utilization-bar-legend-text-color: var(--b-grid-cell-color);--b-resource-utilization-bar-color: color-mix(in srgb, var(--b-color-green), var(--b-mix) 95%);--b-resource-utilization-bar-hover-color: color-mix(in srgb, var(--b-color-green), var(--b-mix) 90%);--b-resource-utilization-underallocated-bar-color: color-mix(in srgb, var(--b-color-green), var(--b-mix) 90%);--b-resource-utilization-underallocated-bar-hover-color: color-mix(in srgb, var(--b-color-green), var(--b-mix) 85%);--b-resource-utilization-underallocated-text-color: color-mix(in srgb, var(--b-color-green), var(--b-opposite) 50%);--b-resource-utilization-overallocated-bar-color: color-mix(in srgb, var(--b-color-red), var(--b-mix) 90%);--b-resource-utilization-overallocated-bar-hover-color: color-mix(in srgb, var(--b-color-red), var(--b-mix) 85%);--b-resource-utilization-overallocated-text-color: color-mix(in srgb, var(--b-color-red), var(--b-opposite) 50%);--b-resource-utilization-resource-bar-legend-text-color: var(--b-resource-utilization-bar-legend-text-color);--b-resource-utilization-resource-bar-color: var(--b-resource-utilization-bar-color);--b-resource-utilization-resource-bar-hover-color: var(--b-resource-utilization-bar-hover-color);--b-resource-utilization-resource-overallocated-bar-color: var(--b-resource-utilization-overallocated-bar-color);--b-resource-utilization-resource-overallocated-bar-hover-color: var(--b-resource-utilization-overallocated-bar-hover-color);--b-resource-utilization-resource-overallocated-text-color: var(--b-resource-utilization-overallocated-text-color);--b-resource-utilization-resource-underallocated-bar-color: var(--b-resource-utilization-underallocated-bar-color);--b-resource-utilization-resource-underallocated-bar-hover-color: var(--b-resource-utilization-underallocated-bar-hover-color);--b-resource-utilization-resource-underallocated-text-color: var(--b-resource-utilization-underallocated-text-color);--b-resource-utilization-assignment-bar-legend-text-color: var(--b-resource-utilization-bar-legend-text-color);--b-resource-utilization-assignment-bar-color: transparent;--b-resource-utilization-assignment-bar-hover-color: transparent;--b-resource-utilization-assignment-overallocated-bar-color: transparent;--b-resource-utilization-assignment-overallocated-bar-hover-color: transparent;--b-resource-utilization-assignment-underallocated-bar-color: transparent;--b-resource-utilization-assignment-underallocated-bar-hover-color: transparent}.b-resource-utilization .b-grid-row{z-index:0}.b-resource-utilization .b-resource-utilization-cell{padding:0;border-inline-end-width:0;background:transparent}.b-resource-utilization.b-animating .b-histogram rect{transition-duration:0s}.b-resource-utilization-histogram{padding:0;background-color:transparent}.b-resource-utilization.b-resource-histogram .b-histogram-canvas{z-index:1}.b-resource-utilization.b-resource-histogram .b-histogram-canvas text.b-bar-legend{writing-mode:lr;alignment-baseline:middle;text-anchor:middle;pointer-events:none;font-size:var(--b-resource-utilization-bar-legend-font-size);fill:var(--b-resource-utilization-bar-legend-text-color)}.b-resource-utilization.b-resource-histogram .b-histogram-canvas rect,.b-resource-utilization.b-resource-histogram .b-histogram-canvas rect.b-series-index-0{fill:var(--b-resource-utilization-bar-color)}:is(.b-resource-utilization.b-resource-histogram .b-histogram-canvas rect,.b-resource-utilization.b-resource-histogram .b-histogram-canvas rect.b-series-index-0):hover{fill:var(--b-resource-utilization-bar-hover-color)}:is(.b-resource-utilization.b-resource-histogram .b-histogram-canvas rect,.b-resource-utilization.b-resource-histogram .b-histogram-canvas rect.b-series-index-0).b-underallocated{--b-resource-utilization-bar-color: var(--b-resource-utilization-underallocated-bar-color);--b-resource-utilization-bar-hover-color: var(--b-resource-utilization-underallocated-bar-hover-color)}:is(.b-resource-utilization.b-resource-histogram .b-histogram-canvas rect,.b-resource-utilization.b-resource-histogram .b-histogram-canvas rect.b-series-index-0).b-series-index-0.b-overallocated,:is(.b-resource-utilization.b-resource-histogram .b-histogram-canvas rect,.b-resource-utilization.b-resource-histogram .b-histogram-canvas rect.b-series-index-0).b-overallocated{--b-resource-utilization-bar-color: var(--b-resource-utilization-overallocated-bar-color);--b-resource-utilization-bar-hover-color: var(--b-resource-utilization-overallocated-bar-hover-color)}.b-resource-utilization .b-histogram-canvas [data-row-type=resource]{--b-resource-utilization-bar-color: var(--b-resource-utilization-resource-bar-color);--b-resource-utilization-bar-hover-color: var(--b-resource-utilization-resource-bar-hover-color)}.b-resource-utilization .b-histogram-canvas [data-row-type=resource] text.b-bar-legend{font-size:var(--b-resource-utilization-resource-bar-legend-font-size);fill:var(--b-resource-utilization-resource-bar-legend-text-color)}.b-resource-utilization .b-histogram-canvas [data-row-type=resource] .b-overallocated{--b-resource-utilization-resource-bar-legend-text-color: var(--b-resource-utilization-resource-overallocated-text-color);--b-resource-utilization-bar-color: var(--b-resource-utilization-resource-overallocated-bar-color);--b-resource-utilization-bar-hover-color: var(--b-resource-utilization-resource-overallocated-bar-hover-color)}.b-resource-utilization .b-histogram-canvas [data-row-type=resource] .b-underallocated{--b-resource-utilization-resource-bar-legend-text-color: var(--b-resource-utilization-resource-underallocated-text-color);--b-resource-utilization-bar-color: var(--b-resource-utilization-resource-underallocated-bar-color);--b-resource-utilization-bar-hover-color: var(--b-resource-utilization-resource-underallocated-bar-hover-color)}:is(.b-resource-utilization .b-histogram-canvas [data-row-type=assignment],.b-resource-utilization .b-histogram-canvas [data-row-type=composite-assignment]) text.b-bar-legend{font-size:var(--b-resource-utilization-assignment-bar-legend-font-size);fill:var(--b-resource-utilization-assignment-bar-legend-text-color)}:is(.b-resource-utilization .b-histogram-canvas [data-row-type=assignment],.b-resource-utilization .b-histogram-canvas [data-row-type=composite-assignment]) rect,:is(.b-resource-utilization .b-histogram-canvas [data-row-type=assignment],.b-resource-utilization .b-histogram-canvas [data-row-type=composite-assignment]) rect.b-series-index-0{--b-resource-utilization-bar-color: var(--b-resource-utilization-assignment-bar-color);--b-resource-utilization-bar-hover-color: var(--b-resource-utilization-assignment-bar-hover-color)}:is(:is(.b-resource-utilization .b-histogram-canvas [data-row-type=assignment],.b-resource-utilization .b-histogram-canvas [data-row-type=composite-assignment]) rect,:is(.b-resource-utilization .b-histogram-canvas [data-row-type=assignment],.b-resource-utilization .b-histogram-canvas [data-row-type=composite-assignment]) rect.b-series-index-0).b-underallocated{--b-resource-utilization-assignment-bar-color: var(--b-resource-utilization-assignment-underallocated-bar-color);--b-resource-utilization-assignment-bar-hover-color: var(--b-resource-utilization-assignment-underallocated-bar-hover-color)}:is(:is(.b-resource-utilization .b-histogram-canvas [data-row-type=assignment],.b-resource-utilization .b-histogram-canvas [data-row-type=composite-assignment]) rect,:is(.b-resource-utilization .b-histogram-canvas [data-row-type=assignment],.b-resource-utilization .b-histogram-canvas [data-row-type=composite-assignment]) rect.b-series-index-0).b-overallocated{--b-resource-utilization-assignment-bar-color: var(--b-resource-utilization-assignment-overallocated-bar-color);--b-resource-utilization-assignment-bar-hover-color: var(--b-resource-utilization-assignment-overallocated-bar-hover-color)}.b-histogram-bar-tooltip .b-on-date{font-weight:500}.b-histogram-bar-tooltip .b-summary-data{margin-block:.5em}.b-histogram-bar-tooltip .b-summary-data .b-effort-data{display:flex}.b-histogram-bar-tooltip .b-summary-data .b-effort-data .b-effort-label{flex:1}.b-histogram-bar-tooltip .b-effort-range-data,.b-histogram-bar-tooltip .b-cost-data,.b-histogram-bar-tooltip .b-quantity-data{display:flex}:is(.b-histogram-bar-tooltip .b-effort-range-data,.b-histogram-bar-tooltip .b-cost-data,.b-histogram-bar-tooltip .b-quantity-data) .b-effort-label{flex:1}.b-histogram-bar-tooltip .b-effort-value.b-underallocated{color:var(--b-resource-utilization-underallocated-text-color)}.b-histogram-bar-tooltip .b-effort-value.b-overallocated{color:var(--b-resource-utilization-overallocated-text-color)}.b-histogram-bar-tooltip .b-assignments{display:grid;column-gap:.5em}.b-histogram-bar-tooltip .b-assignment{display:contents}.b-histogram-bar-tooltip .b-assignment .b-assignment-name{grid-column:1}.b-histogram-bar-tooltip .b-assignment .b-effort-data{display:flex;grid-column:2;text-align:end}.b-histogram-bar-tooltip .b-assignment .b-cost-data{grid-column:3;text-align:end}.b-histogram-bar-tooltip .b-assignment .b-quantity-data{grid-column:4;text-align:end}.b-histogram-bar-tooltip .b-assignment .b-effort-label{display:none}.b-histogram-bar-tooltip .b-assignment .b-effort-value{width:100%}:root,:host{--b-form-tab-padding: var(--b-container-gap) 0 2px 0}.b-form-tab,.b-recurrence-tab:not(.b-tab),.b-overlay-scrollbar .b-form-tab.b-container.b-vertical-overflow{padding:var(--b-form-tab-padding)}.b-form-tab.b-container.b-widget.b-label-align-before>.b-widget.b-has-label>.b-field-inner{grid-column:span 3}.b-form-tab.b-container.b-widget.b-label-align-before>.b-half-width.b-widget.b-has-label>.b-field-inner{grid-column:span 1}.b-form-tab.b-container.b-widget .b-divider{grid-column:1 / -1}.b-visible-scrollbar .b-form-tab.b-container.b-widget.b-vertical-overflow{padding-inline-end:var(--b-container-gap)}.b-advanced-tab.b-form-tab.b-label-align-before.b-container{grid-template-columns:max-content 1fr 8em max-content}.b-advanced-tab.b-form-tab.b-label-align-before.b-container .b-label{white-space:normal}.b-advanced-tab.b-form-tab.b-label-align-before.b-container>.b-text-field.b-has-label>.b-label{grid-column:1}.b-advanced-tab.b-form-tab.b-label-align-before.b-container>.b-text-field.b-has-label>.b-field-inner{grid-column:2}.b-advanced-tab.b-form-tab.b-label-align-before.b-container>.b-slide-toggle.b-has-label>.b-label{grid-column:3}.b-advanced-tab.b-form-tab.b-label-align-before.b-container>.b-slide-toggle.b-has-label>.b-field-inner{grid-column:4}.b-notes-tab [data-ref=noteField]{height:calc(100% - .5em)}.b-scheduler-advanced-tab.b-container.b-widget.b-label-align-before>.b-text-field.b-has-label>.b-label{grid-column:1}.b-scheduler-advanced-tab.b-container.b-widget.b-label-align-before>.b-text-field.b-has-label>.b-field-inner{grid-column:2}.b-scheduler-advanced-tab.b-container.b-widget.b-label-align-before>.b-slide-toggle.b-has-label>.b-label{grid-column:3}.b-scheduler-advanced-tab.b-container.b-widget.b-label-align-before>.b-slide-toggle.b-has-label>.b-field-inner{grid-column:4}.b-recurrence-tab .b-recurrence-editor-panel{--b-panel-padding: 1.5em 0 0 0}
+/*# sourceMappingURL=schedulerpro.thin.min.css.map */
