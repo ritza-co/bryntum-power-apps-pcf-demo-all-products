@@ -274,6 +274,8 @@ Each PCF is self-contained, deploys independently with `pac pcf push`, and stays
 
 You add the Gantt PCF, the Calendar PCF, etc. as separate components on the same custom page in Power Apps — they render side-by-side.
 
+**React wrappers work out of the box.** Because each PCF bundles its own Bryntum, you can use the `@bryntum/*-react-thin` wrappers directly — `import { BryntumGantt } from '@bryntum/gantt-react-thin'` and use `<BryntumGantt {...config} />` in JSX. No `appendTo: ref.current` plumbing, type-safe props, lifecycle handled. (Option 1 can't use the wrappers without webpack `externals` config because the wrappers internally `import` the thin packages, which would defeat the externalization.)
+
 **You don't need Option 1's Dataverse web resources for this case** — Bryntum's JS and CSS stay bundled inside each PCF, no extra infrastructure to manage. Option 1 is only necessary when you want *all six products* in *one* PCF (which exceeds 5 MB).
 
 - **Pro:** simplest architecture. No shared-bundle build step, no script injection, no realm/timing gotchas. Each PCF is independent.
