@@ -4,7 +4,9 @@
   "description": "Per-product Bryntum bundles for Dataverse web resource hosting",
   "private": true,
   "scripts": {
-    "build": "webpack --mode production"
+    "build": "npm run build:js && npm run build:css",
+    "build:js": "webpack --mode production",
+    "build:css": "node scripts/build-css.js"
   },
   "dependencies": {
     "@bryntum/core-thin": "^7.3.0",

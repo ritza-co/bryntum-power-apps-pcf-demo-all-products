@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="Bryntum" constructor="Bryntum" version="0.1.8" display-name-key="Bryntum" description-key="Bryntum description" control-type="virtual" >
+  <control namespace="Bryntum" constructor="Bryntum" version="0.2.0" display-name-key="Bryntum" description-key="Bryntum description" control-type="virtual" >
     <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
     If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be false by default.
     Example1:
@@ -22,21 +22,14 @@
     <resources>
       <code path="index.ts" order="1"/>
       <platform-library name="React" version="16.8.6" />
-      <!-- Layout/loader styles -->
+      <!--
+        Only the layout/loader CSS for this PCF is bundled here.
+        Bryntum's own CSS is hosted on Dataverse as bryntum.css (single web
+        resource, ~744 KiB) and injected at runtime by AllProducts.tsx →
+        loadBryntumCss(). That means updating Bryntum is "re-upload bryntum.js
+        + bryntum.css on Dataverse", with no PCF rebuild needed.
+      -->
       <css path="css/AllProducts.css" order="1" />
-      <!-- FontAwesome (icons) — solid.min.css references the FA CDN for the webfont -->
-      <css path="css/fontawesome.min.css" order="2" />
-      <css path="css/solid.min.css" order="3" />
-      <!-- Bryntum structural CSS (each thin product's own styles) -->
-      <css path="css/core.thin.min.css" order="4" />
-      <css path="css/grid.thin.min.css" order="5" />
-      <css path="css/scheduler.thin.min.css" order="6" />
-      <css path="css/schedulerpro.thin.min.css" order="7" />
-      <css path="css/gantt.thin.min.css" order="8" />
-      <css path="css/calendar.thin.min.css" order="9" />
-      <css path="css/taskboard.thin.min.css" order="10" />
-      <!-- Theme — overrides product structural CSS -->
-      <css path="css/svalbard-light.min.css" order="11" />
     </resources>
     <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
     <feature-usage>

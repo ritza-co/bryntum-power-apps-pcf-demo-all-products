@@ -2,11 +2,14 @@ import * as React from 'react';
 import { useEffect, useRef, useState } from 'react';
 
 // Bryntum is loaded from a Dataverse web resource at runtime,
-// not bundled into the PCF. Adjust the URL to match your publisher prefix
-// (e.g. if your prefix is "test", the URL becomes "/WebResources/test_bryntum.js").
+// not bundled into the PCF. Adjust the URLs to match your publisher prefix
+// (e.g. if your prefix is "test", the URLs become "/WebResources/test_bryntum.js"
+// and "/WebResources/test_bryntum.css").
 const BRYNTUM_SCRIPT_URL = '/WebResources/test_bryntum.js';
+const BRYNTUM_CSS_URL = '/WebResources/test_bryntum.css';
 const BRYNTUM_INLINE_SCRIPT_ID = 'bryntum-shared-inline-bundle';
 const BRYNTUM_EXTERNAL_SCRIPT_ID = 'bryntum-shared-external-bundle';
+const BRYNTUM_CSS_LINK_ID = 'bryntum-shared-css';
 const BRYNTUM_LOAD_TIMEOUT_MS = 60000;
 
 // Window global the bundle exposes (see bryntum-shared/src/all.js).
@@ -63,6 +66,24 @@ function withTimeout<T>(promise: Promise<T>, label: string): Promise<T> {
 }
 
 let bryntumLoadPromise: Promise<void> | null = null;
+
+// Inject the shared Bryntum stylesheet hosted on Dataverse. Idempotent — safe
+// to call from multiple PCFs on the same page; the second call sees the
+// existing <link> and does nothing.
+//
+// We use a plain <link> tag (not fetch + inline <style>) because CSS doesn't
+// have the realm/timing problem that bit us with the JS bundle — browsers
+// apply stylesheets to the same document regardless of how the <link> got
+// there, and order-relative-to-other-CSS is preserved.
+function loadBryntumCss(): void {
+  if (document.getElementById(BRYNTUM_CSS_LINK_ID)) return;
+
+  const link = document.createElement('link');
+  link.id = BRYNTUM_CSS_LINK_ID;
+  link.rel = 'stylesheet';
+  link.href = BRYNTUM_CSS_URL;
+  document.head.appendChild(link);
+}
 
 function assertLooksLikeBryntumBundle(code: string): void {
   if (!code.includes('bryntum') || !code.includes('window.bryntum')) {
@@ -133,6 +154,12 @@ function loadBryntumBundleAsExternalScript(): Promise<void> {
 
 async function loadBryntumBundle(): Promise<void> {
   if (isBryntumReady()) return;
+
+  // Start the CSS download immediately so the browser fetches it in parallel
+  // with the JS bundle below. We don't await it — the <link> tag applies
+  // styles as soon as the browser finishes downloading, regardless of when
+  // the JS finishes loading.
+  loadBryntumCss();
 
   // Fetch the bundle as text, then execute it in this PCF's JS realm.
   //
